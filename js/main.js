@@ -3,37 +3,15 @@
 // Методы массивов 
 // LearnJS HW
 
-// Task1
+// Task2
 
-let str = '-webkit-transition';
+let arr = [5, 3, 8, 1];
 
-function camelize(str) {
-    // debugger;
-    let StrSplitted = str.split('');
-
-    let firstCapLetter = StrSplitted[0].toUpperCase();
-    StrSplitted.splice(0, 1, firstCapLetter);
-    
-    for(let symb of StrSplitted) {
-
-        if(symb === '-') {
-            let dashInd = StrSplitted.indexOf(symb);
-            let capLetter = StrSplitted[dashInd + 1].toUpperCase();
-            StrSplitted.splice(dashInd + 1, 1, capLetter);
-            StrSplitted.splice(dashInd, 1);
-        }
-    }
-    return console.log(StrSplitted.join(''));
+function filterRange(arr, a, b) {
+    return arr.filter((elem) => a <= elem && elem < b);
 }
 
-camelize(str);
+let filtered = filterRange(arr, 1, 4);
 
-// correct version
-
-function camelize(str) {
-    return str.split('-')
-    .map((word, index) => index === 0? word: word[0].toUpperCase() + word.slice(1))
-    .join('');
-}
-
-console.log(camelize(str));
+console.log( filtered ); // 3,1 (совпадающие значения)
+console.log( arr ); // 5,3,8,1 (без изменений)
