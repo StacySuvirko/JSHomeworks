@@ -3,15 +3,20 @@
 // Методы массивов 
 // LearnJS HW
 
-// Task2
+// Task3
 
 let arr = [5, 3, 8, 1];
 
-function filterRange(arr, a, b) {
-    return arr.filter((elem) => a <= elem && elem < b);
+function filterRangeInPlace(arr, a, b) {
+
+    for (let elem of arr) {
+        if (a > elem || elem > b) {
+            let index = arr.indexOf(elem)
+            arr.splice(index, 1);
+        }
+    }
 }
 
-let filtered = filterRange(arr, 1, 4);
+filterRangeInPlace(arr, 1, 4); // удалены числа вне диапазона 1..4
 
-console.log( filtered ); // 3,1 (совпадающие значения)
-console.log( arr ); // 5,3,8,1 (без изменений)
+console.log( arr ); // [3, 1]
