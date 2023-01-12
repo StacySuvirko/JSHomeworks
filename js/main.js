@@ -3,20 +3,10 @@
 // Методы массивов 
 // LearnJS HW
 
-// Task3
+// Task4
 
-let arr = [5, 3, 8, 1];
+let arr = [5, 2, 1, -10, 8];
 
-function filterRangeInPlace(arr, a, b) {
+arr.sort((a, b) => b - a)
 
-    for (let elem of arr) {
-        if (a > elem || elem > b) {
-            let index = arr.indexOf(elem)
-            arr.splice(index, 1);
-        }
-    }
-}
-
-filterRangeInPlace(arr, 1, 4); // удалены числа вне диапазона 1..4
-
-console.log( arr ); // [3, 1]
+console.log( arr ); // 8, 5, 2, 1, -10
