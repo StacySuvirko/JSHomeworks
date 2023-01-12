@@ -3,17 +3,16 @@
 // Методы массивов 
 // LearnJS HW
 
-// Task9
+// Task11
 
 let vasya = { name: "Вася", age: 25 };
 let petya = { name: "Петя", age: 30 };
-let masha = { name: "Маша", age: 28 };
+let masha = { name: "Маша", age: 29 };
 
 let arr = [ vasya, petya, masha ];
 
-function sortByAge(users) {
-    users.sort((user1, user2) => user1.age - user2.age);
+function getAverageAge(users) {
+    return users.reduce((accum, user) => accum + user.age, 0)/users.length;
 }
-sortByAge(arr);
 
-console.log(arr);
+console.log(getAverageAge(arr));
