@@ -3,29 +3,14 @@
 // Методы массивов 
 // LearnJS HW
 
-// Task6
+// Task7
 
-function Calculator () {
-  this.methods = {
-    '+': (a, b) => a + b,
-    '-': (a, b) => a - b,
-  }
-  this.calculate = function (str) {
-    let split = str.split(' ')
-    , a = +split[0]
-    , b = +split[2]
-    , op = split[1];
+let vasya = { name: "Вася", age: 25 };
+let petya = { name: "Петя", age: 30 };
+let masha = { name: "Маша", age: 28 };
 
-    if(!this.methods[op] || isNaN(a) || isNaN(b)) return NaN;
-    return this.methods[op](a, b);
-  }
-  this.addMethod = function (name, func) {
-    this.methods[name] = func;
-  } 
-}
+let users = [ vasya, petya, masha ];
 
-let calc = new Calculator();
-console.log(calc.calculate('9 - 2'));
-calc.addMethod("*", (a, b) => a * b);
-console.log(calc.calculate('9 * 7'));
+let names = users.map(user => user.name)
 
+alert( names ); // Вася, Петя, Маша
