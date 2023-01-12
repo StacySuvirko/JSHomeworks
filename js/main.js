@@ -3,16 +3,18 @@
 // Методы массивов 
 // LearnJS HW
 
-// Task11
+// Task12
 
-let vasya = { name: "Вася", age: 25 };
-let petya = { name: "Петя", age: 30 };
-let masha = { name: "Маша", age: 29 };
-
-let arr = [ vasya, petya, masha ];
-
-function getAverageAge(users) {
-    return users.reduce((accum, user) => accum + user.age, 0)/users.length;
-}
-
-console.log(getAverageAge(arr));
+function unique(arr) {
+    let arrSorted = [];
+    for (let value of arr) {
+        if (!arrSorted.includes(value)) arrSorted.push(value);
+        }
+        return arrSorted;
+    }
+  
+  let strings = ["кришна", "кришна", "харе", "харе",
+    "харе", "харе", "кришна", "кришна", ":-O"
+  ];
+  
+  console.log( unique(strings) ); // кришна, харе, :-O
