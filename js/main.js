@@ -3,10 +3,13 @@
 // Методы массивов 
 // LearnJS HW
 
-// Task4
+// Task5
 
-let arr = [5, 2, 1, -10, 8];
+let arr = ["HTML", "JavaScript", "CSS"];
 
-arr.sort((a, b) => b - a)
+function copySorted(arr) {
+    return arr.slice().sort();
+}
 
-console.log( arr ); // 8, 5, 2, 1, -10
+console.log(copySorted(arr));
+console.log(arr);
