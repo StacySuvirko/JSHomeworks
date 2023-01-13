@@ -84,3 +84,31 @@ clearArray(arr)
 console.log(arr);
 // => [1, 2, 3, 4, 5]
 
+
+
+//### 7
+//Написать ф-цию, которая принимает массив объектов. Значения этих объектов - числа. Вернуть объект с суммами ключей
+
+function calculate(array) {
+    return array.reduce((resultObj, currentObj) => {
+        for(let key in currentObj) {
+
+            if(!(key in resultObj)) {
+               resultObj[key] = currentObj[key];
+            } else {
+               resultObj[key] += currentObj[key];
+            }
+        }
+        return resultObj;
+    },{})
+}
+
+let arr2 = [
+    { x: 1, z: 2, y: 3 },
+    { x: 10, z: 21, y: 4 },
+    { x: 2, z: 3, y: 4 },
+    { a: 1, b: 2 },
+];
+
+console.log(calculate(arr2));
+// => { x: 13, z: 26, y: 11, a: 1, b: 2 }
