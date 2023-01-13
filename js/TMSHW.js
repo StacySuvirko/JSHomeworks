@@ -55,3 +55,18 @@ function isEvenValue(obj) {
 
 console.log(isEvenValue({ x: 1, y: 2 })); // => true
 console.log(isEvenValue({ x: 1, y: 1 })); // => false
+
+//### 5
+//Написать ф-цию, которая принимает массив из чисел, где есть повторяющиеся элементы, и возвращает новый массив, в котором будут только уникальные элементы.
+
+function removeDuplicates(array) {
+    let sortedArr = [];
+    for(let num of array) {
+        if(!sortedArr.includes(num)) sortedArr.push(num);
+    }
+    return sortedArr;
+}
+
+console.log(removeDuplicates([1, 1, 2, 2, 3, 3]));
+// => [1, 2, 3]
+
