@@ -34,7 +34,6 @@ console.log(getValues(arr1, 'age'));
 // Написать ф-цию, которая принимает объект и меняет местами ключи и значения
 
 function convertObject(obj) {
-    // debugger;
     let newObj = {};
     for(let key in obj) {
         newObj[obj[key]] = key;
@@ -43,3 +42,16 @@ function convertObject(obj) {
 }
 
 console.log(convertObject({ a: 'b', c: 'd' })); // => { b: 'a', d: 'c' }
+
+//### 4
+//Написать ф-цию, которая принимает объект, где в качестве значений - числа. Ф-ция должна проверить, есть ли среди значений четные числа и вернуть true/false
+
+function isEvenValue(obj) {
+    for (let key in obj) {
+        if(obj[key] % 2 === 0) return true;
+        }
+    return false;
+    }
+
+console.log(isEvenValue({ x: 1, y: 2 })); // => true
+console.log(isEvenValue({ x: 1, y: 1 })); // => false
