@@ -28,3 +28,18 @@ let arr1 = [
 
 console.log(getValues(arr1, 'name'));
 console.log(getValues(arr1, 'age'));
+
+
+//### 3
+// Написать ф-цию, которая принимает объект и меняет местами ключи и значения
+
+function convertObject(obj) {
+    // debugger;
+    let newObj = {};
+    for(let key in obj) {
+        newObj[obj[key]] = key;
+    }
+    return newObj;
+}
+
+console.log(convertObject({ a: 'b', c: 'd' })); // => { b: 'a', d: 'c' }
