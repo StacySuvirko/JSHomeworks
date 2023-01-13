@@ -70,3 +70,17 @@ function removeDuplicates(array) {
 console.log(removeDuplicates([1, 1, 2, 2, 3, 3]));
 // => [1, 2, 3]
 
+
+
+//### 6
+//Написать ф-цию, которая очищает массив от нежелательных значений, таких как false, undefined, пустые строки, 0, null.
+
+function clearArray(array) {
+    return array.filter(elem => elem);
+}
+
+let arr = [1, false, 2, undefined, 3, '', 4, 0, 5, null]
+clearArray(arr)
+console.log(arr);
+// => [1, 2, 3, 4, 5]
+
