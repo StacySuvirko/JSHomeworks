@@ -70,6 +70,15 @@ function removeDuplicates(array) {
 console.log(removeDuplicates([1, 1, 2, 2, 3, 3]));
 // => [1, 2, 3]
 
+// варианты решения учителя:
+
+function removeDuplicates(array) {
+    return array.filter((elem, index) => array.indexOf(elem) === index)
+}
+
+function removeDuplicates(array) {
+    return [...(new Set(array))];
+  }
 
 
 //### 6
