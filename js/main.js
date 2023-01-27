@@ -1,33 +1,21 @@
 "use strict";
 
-// Методы массивов 
-// LearnJS HW
+// const arr1 = [1, 5, 7, 'ddd', 'uyg', 'nnnnn', true, false, 99, null];
+// console.log(arr1);
+// Умножить на 2 все-все элементы массива:
 
-// Task13
+const multidimArr = [1, 2, [3, 4, 5, [6, 7, [8, 9, 10]]]];
+console.log(JSON.stringify(multidimArr));
 
-let users = [
-    {id: 'john', name: "John Smith", age: 20},
-    {id: 'ann', name: "Ann Smith", age: 24},
-    {id: 'pete', name: "Pete Peterson", age: 31},
-  ];
-  
-  let usersById = groupById(users);
-  
-function groupById(users) {
-    return users.reduce((accum, obj) => {
-        accum[obj.id] = obj;
-        return accum;
-    }, {})
+function doubble() {
+ return function(x) {
+     if(!Array.isArray(x)) {
+        return x * 2;
+     } else {
+        return x.map(doubble());
+     }
+ }
 }
 
-
-console.log(usersById);
-  /*
-  // после вызова у нас должно получиться:
-  
-  usersById = {
-    john: {id: 'john', name: "John Smith", age: 20},
-    ann: {id: 'ann', name: "Ann Smith", age: 24},
-    pete: {id: 'pete', name: "Pete Peterson", age: 31},
-  }
-  */
+let d = multidimArr.map(doubble());
+console.log(JSON.stringify(d));
