@@ -44,3 +44,15 @@ const sub = substract(a)(b); // a - b */
 // console.log(substract(19)(7));
 // console.log(substract(9)(10));
 
+/* ###3
+Добавить возможность вызова на числах метода для получения суммы цифр из которых состоит это число. Пример:
+
+const num = 2021;
+const sumOfDigits = num.getSumOfDigits(); // 5 */
+
+// Number.prototype.getSumOfDigits = function() {
+//     return Array.from(this.toString()).reduce((sum, num)  => sum + +num, 0);
+// }
+
+// const num = 678;
+// console.log(num.getSumOfDigits());
