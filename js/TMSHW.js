@@ -140,3 +140,113 @@ console.log(triangle.getArea());
 console.log(square.getPerimeter());
 console.log(square.getArea());
 
+/* ###5
+Объектно-ориентированный список книг
+Создать класс BookList. Создайть еще один класс под названием Book. 
+BookList должен иметь следующие свойства:
+1) Ссылка на следующую книгу для чтения (экземпляр Book)
+2) Ссылка на читаемую в данный момент книгу (экземпляр Book)
+3) Ссылка на последнюю прочитанную книгу (экземпляр Book)
+4) Массив всех книг
+
+BookList должен иметь следующие методы:
+1) Добавить книгу в список книг .addBook(экземпляр Book)
+2) Пометить книгу, которая в настоящее время читается, как "прочитанную" .finishCurrentBook()
+   Данный метод должен:
+      1. Установить читаемой книге дату прочтения new Date()
+      2. Изменить последнюю прочитанную книгу на книгу, которую только что закончили
+      3. Установить в поле текущая книга, следующую книгу, которую нужно прочитать
+      4. Установить в поле следующая книга, первую непрочитанную книгу, которую вы найдете в списке.
+3) Получить количество книг, отмеченных как прочитанные .getReadBooksCount()
+4) Получить количество книг, отмеченных как непрочитанные .getUnreadBooksCount()
+
+Каждая книга (класс Book) должна иметь несколько свойств:
+1) Заголовок
+2) Жанр
+3) Автор
+4) Читается в данный момент (true или false. Изначально false)
+5) Дата прочтения. Если книгу не читали, то поле будет пустое, иначе должен быть объект Date.
+
+Для BookList и Book может потребоваться больше методов. Постарайтесь придумать еще что-нибудь, что может быть полезно.
+
+Пример:
+const books = [
+  new Book('Преступление и наказание', 'Проза', 'Фёдор Достоевский'),
+  new Book('1984', 'Проза, Фантастика', 'Джордж Оруэлл'),
+  new Book('Властелин колец', 'Фэнтези', 'Джон Рональд Руэл Толкин'),
+  new Book('Война и мир', 'Роман-Эпопея', 'Лев Николаевич Толстой'),
+  new Book('Алиса в Стране чудес', 'Сказка', 'Льюис Кэрролл')
+];
+
+const bookList = new BookList(books);
+
+bookList.finishCurrentBook();
+
+console.log(bookList.currentBook);
+console.log(bookList.nextBook);
+console.log(bookList.lastReadBook);
+
+bookList.addBook(new Book('Скотный двор', 'Притча, сатира, антиутопия', 'Джордж Оруэлл'));
+ */
+
+class BookList {
+    constructor(list) {
+        this.list = list;
+        this.current = this.list[0];
+        this.next = this.list[1];
+        this.last = this.list.filter(book => book.finishDate).sort((a, b) => a.finishDate - b.finishDate).at(-1);
+    }
+
+    addBook(book) {
+        this.list.push(book);
+    }
+
+    finishCurrentBook() {
+        this.current.finishDate = new Date();
+        this.last = this.current;
+        this.current = this.next;
+         
+        for(let i = this.list.indexOf(this.current) + 1; i < this.list.length; ++i) {
+            if(!this.list[i].finishDate) {
+                this.next = this.list[i];
+                return;
+            };
+        }
+    }
+    
+    getReadBooksCount() {
+        let read = this.list.filter(book => book.finishDate);
+        return console.log(read.length);
+    }
+
+    getUnreadBooksCount() {
+        let unread = this.list.filter(book => !book.finishDate);
+        return console.log(unread.length);
+    }
+}
+
+
+class Book {
+    constructor(title, genre, author) {
+        this.title = title;
+        this.genre = genre;
+        this.autor = author;
+        this.readingNow = false;
+        this.finishDate = null;
+    }
+};
+
+const books = [
+    new Book('Преступление и наказание', 'Проза', 'Фёдор Достоевский'),
+    new Book('1984', 'Проза, Фантастика', 'Джордж Оруэлл'),
+    new Book('Властелин колец', 'Фэнтези', 'Джон Рональд Руэл Толкин'),
+    new Book('Война и мир', 'Роман-Эпопея', 'Лев Николаевич Толстой'),
+    new Book('Алиса в Стране чудес', 'Сказка', 'Льюис Кэрролл')
+  ];
+  
+  const bookList = new BookList(books);
+  
+  bookList.finishCurrentBook();
+  bookList.finishCurrentBook();
+  
+ bookList.addBook(new Book('Скотный двор', 'Притча, сатира, антиутопия', 'Джордж Оруэлл'));
